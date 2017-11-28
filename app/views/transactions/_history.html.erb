@@ -1,0 +1,54 @@
+<h2 id="mytitle"> Ongoing transactions</h2>
+<div id= "mytrans1" class="container">
+    <table class="table">
+        <thead>
+          <tr id="myheader1">
+            <th>Item</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Amount</th>
+            <th>Contract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.ongoing_transaction.each do |t| %>
+          <tr id="mytable1">
+            <td><%= t.item_name %></td>
+            <td><%= t.start_date %></td>
+            <td><%= t.end_date %></td>
+            <td> Some number </td>
+            <td><i style="font-size:24px" class="fa">&#xf0f6;</i></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+<br>
+
+<h2 id="mytitle"> Past transactions</h2>
+<div id= "mytrans2" class="container">
+      <table class="table">
+        <thead>
+          <tr id="myheader2">
+            <th>Item</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Amount</th>
+            <th>Contract</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.past_transaction.each do |t| %>
+          <tr id="mytable2">
+            <td><%= t.item_name %></td>
+            <td><%= t.start_date %></td>
+            <td><%= t.end_date %></td>
+            <td> Some number </td>
+            <td><i style="font-size:24px" class="fa">&#xf0f6;</i></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+</div>

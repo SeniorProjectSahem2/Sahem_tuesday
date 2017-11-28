@@ -1,0 +1,31 @@
+<br><h1 id="itemsheader">Available Equipment</h1><br>
+
+<div class="container-fluid text-center">    
+
+  <div class="col-sm-1"></div>
+  
+  <div class="col-sm-10 text-center"> 
+      
+    <b id="filterText">To Filter:</b>&nbsp;  
+    <%= link_to 'All Items', all_items_url, :remote => true, class:'btn btn-default btn-change', id:"categorySideBar" %>
+    <% @categories.each do |category| %>
+      | <%= link_to category.name, fetch_items_path(:category_id => category.id), :remote => true, class:'btn btn-default btn-change', id:"categorySideBar" %>
+    <% end %>
+    <br><br>
+    
+    <%= form_tag from_search_path  , :remote => true do %>
+      <div class="input-group stylish-input-group">
+      <input type="text" class="form-control" name ="query" type ="text" placeholder="Search an Item (e.g: Mini Fridge, Camera, Tent, etc)" >
+        <span class="input-group-addon">
+          <button type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+          </button>  
+        </span>
+      </div>
+    <% end %>
+    
+  </div>
+  
+  <div class="col-sm-1"></div>
+
+</div>

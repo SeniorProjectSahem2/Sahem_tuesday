@@ -1,0 +1,36 @@
+<div class="container-fluid text-left row">    
+	  <div class="row content">
+	    
+	    <div class="col-sm-3 sidenav">
+      </div>
+      
+      <div class="col-sm-6"> 
+      
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <div id= "myform" class="container">
+        <%= devise_error_messages! %>
+      
+        <h1>Forgot your password?</h1><br>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true,:id => "fieldsize" %>
+        </div>
+      
+        <div class="actions">
+          <br>
+          <%= f.submit "Reset my Password",:id => "forgotPassField" %>
+        </div>
+      <% end %>
+      
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
+      </div>
+      
+</div> 
+</div>
+
+<div class="col-sm-3 sidenav">
+      </div>
+    
+    </div>
+</div>

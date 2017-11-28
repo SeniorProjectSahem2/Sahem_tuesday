@@ -1,0 +1,54 @@
+<div class="container-fluid text-left row">    
+	  <div class="row content">
+	    
+	    <div class="col-sm-3 sidenav">
+      </div>
+      
+      <div class="col-sm-6"> 
+       <div id= "myform" class="container">
+       <h1>Edit my Information</h1><br>
+        <%= form_for(@user) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+        
+          <div class="field">
+            <%= f.label :first_name %><br>
+            <%= f.text_field :first_name, :id => "fieldsize"%>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :last_name %><br>
+            <%= f.text_field :last_name, :id => "fieldsize" %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :location_id %><br>
+            <%= f.text_field :location_id, :id => "fieldsize" %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :user_type_id %><br>
+            <%= f.text_field :user_type_id, :id => "fieldsize" %>
+          </div>
+          <br>
+          <div id= "mybutton" class="actions">
+            <%= f.submit "Submit Changes",:id => "usernewbutt" %>
+          </div>
+        <% end %>
+      </div> 
+      
+      <div class="col-sm-3 sidenav">
+      </div>
+    
+    </div>
+</div>

@@ -1,0 +1,225 @@
+<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
+
+
+<body>
+	<!-- Section 1 -->	
+	
+	<!--<div class="container-fluid" >-->
+
+	<div id="home" class="container-fluid">
+		
+	<div class="container-fluid text-center">    
+	  <div class="row content">
+	    <div class="col-sm-2 sidenav">
+	    </div>
+	
+	
+		<div class="col-sm-8 text-center"> 
+			<br><br>
+			<p id="homePar">Lending and Borrowing<br>Event Equipment</p>
+			<h1 id="homeh1">Welcome to Sahem</h1>	 
+			<br><br>
+
+
+
+		<!-- search engine code from https://bootsnipp.com/snippets/featured/stylish-input-using-icon-font -->
+			<div class="row">
+			<div class ="container-fluid"> 
+			 
+			    
+	    	<%= form_tag search_items_path do %>
+	    	<div class="input-group stylish-input-group">
+	        <input type="text" class="form-control" name ="query" type ="text" placeholder="Search an Item (e.g: Mini Fridge, Camera, Tent, etc)" >
+	        <span class="input-group-addon">
+	            <button type="submit">
+	                <span class="glyphicon glyphicon-search"></span>
+	            </button>  
+	        </span>
+	        </div>
+	       <% end %>
+	       <br><br>
+	       <button id="lendingButtHomePage"><%= link_to new_item_path do %>  Add Item  <% end %></button>
+		   <div class="text-right">
+		   	<br><br><br><br>
+		   </div>
+		   
+			    
+			</div>   
+			</div>
+		</div>
+	
+		<div class="col-sm-2 sidenav">
+	      <div>
+	        <p></p>
+	      </div>
+	      <div>
+	        <p></p>
+	      </div>
+	    </div>
+	    
+	  </div>
+	</div>
+
+	<!--<div class="carousel-caption" id="homecarousel-caption">-->
+		
+	<!--	<h2 id="homeh3">Have an Item? </h2> <h5><button type="submit" id="lendingButt"><%= link_to 'Start Lending', new_item_path, id: "homeh23" %></button> </h5>-->
+	<!--</div>-->
+
+	</div>
+	
+  
+  
+	<div class="container-fluid text-center row" id="about">    
+	<div class="row content">
+	<div class="col-sm-3 sidenav">
+	  
+	</div>
+	
+	
+	<div class="col-sm-6 text-left"> 
+		<br>
+		
+		<h2 id="homeh2">Who Are We?</h2>
+		<hr id="homehr1">
+		<br>
+		<p id="homePar2">
+
+		Sahem (meaning contribute) facilitates borrowing and lending event/project equipment in Qatar. <br><br>
+
+		As a business, or an individual, you can post equipment for people to rent for a fee that you see fair. As a user, you can browse all items and borrow the things you need. <br><br>
+
+		As Sahem, we take 10% of the rent price that the owner decides. We also take care of the delivery service between the owner and borrower.
+
+		</p>
+	</div>
+	
+	<div class="col-sm-3 sidenav">
+	</div>
+	
+	</div>
+	</div>
+	
+	<div class="container-fluid row" id="earnedMoney">    
+	<div class="row content">
+	<div class="col-sm-3 sidenav text-center">
+	
+          <h3 id="earnedMoneyTit">Most Earned<br>User in Nov <span class="glyphicon glyphicon-signal"></span></h3>
+        
+        
+	</div>
+	
+	<div class="col-sm-6 text-center" id="earnedMoneyPadd"> 
+	   
+	   <button class="btn btn-info" id="earnedMoneyButt">
+	   	<h4> # 1 </h4>
+	   </button>
+	  
+	  <button class="btn btn-info" id="earnedMoneyButt">
+	   	<h4> Anon </h4>
+	   </button>
+        
+        <button class="btn btn-info" id="earnedMoneyButt">
+	   	<h4> No. of Rentals </h4>
+	   </button>
+        
+        <button class="btn btn-info" id="earnedMoneyButt">
+	   	<h4> Money Earned </h4>
+	   </button>
+        
+	</div>
+	
+	<div class="col-sm-3 text-left"> 
+	</div>
+	
+	</div>
+	</div>
+
+	<div class="row">
+	<div class="col-lg-12 text-center">
+		<br><br>
+	  <h2 id="homeh22">We Value</h2>
+	   <hr id="homehr2">
+	
+	</div>
+	</div>
+	     
+	<div class="container">
+		<br>
+	<div class="row">
+	<div class="col-lg-4 col-md-6 text-center">
+	  <div class="service-box">
+	    <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+	    <h4 id="homeValueTitle">Experience Surpasses Owning</h4>
+	    <p class="text-muted" id="homeValuePar">Have access to high quality stuff you can’t afford.</p>
+	  </div>
+	</div>
+	
+	<div class="col-lg-4 col-md-6 text-center">
+	<div class="service-box">			
+	  <i class="fa fa fa-4x fa-money text-primary sr-icons"></i>
+	  <h4 id="homeValueTitle">Customer Satisfaction</h4>
+	  <p class="text-muted" id="homeValuePar">Save money by borrowing stuff you don’t need, and earn money from stuff you don’t often use.</p>		  
+	</div>
+	</div>
+	
+	<div class="col-lg-4 col-md-6 text-center">
+	<div class="service-box">
+	<i class="fa fa fa-4x fa-leaf text-primary sr-icons"></i>				  
+	<h4 id="homeValueTitle">Utility Maximization</h4>
+	  <p class="text-muted" id="homeValuePar">Increase the utility of device.<br><br><br><br></p>
+	</div>
+	</div>
+	
+	</div>
+	</div>
+
+
+	<div class="container-fluid text-center row" id="contact">    
+	  <div class="row content">
+	    <div class="col-sm-4 sidenav"></div>
+		
+		
+	    <div class="col-sm-4 text-left"><br>
+	    
+	 
+	        <h2 id="homeh2">Get in Touch</h2>
+		    <hr id="homehr1"><br>
+		    <p id="homePar2">Sahem is committed to exceeding your needs. Questions, comments or special requests? We’d love to hear from you, so don’t hesitate to reach out today.</p><br>
+		
+	    </div>
+		
+		<section class="content-section text-center">
+        <div class="contact-section">
+        <div class="container">        
+		<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			
+		  <form class="form-horizontal">
+		    <div class="form-group">
+		      <input type="text" class="form-control" id="InputName" placeholder="Enter Name Here">
+		    </div>
+		    <div class="form-group">
+		      <input type="email" class="form-control" id="InputEmail" placeholder="Enter E-mail Here">
+		    </div>
+		    <div class="form-group ">
+		     <textarea  class="form-control" placeholder="Description"></textarea> 
+		    </div>
+		    <br>
+		    <button type="submit" id="lendingButt">Send Message</button>
+		    <br><br><br><br>
+		  </form>
+
+		 </div>
+		 </div>
+         </div>
+         </div>
+         </section>
+		
+			
+	    
+		<div class="col-sm-4 sidenav"></div>
+	  </div>
+	</div>			
+	
+	
+</body>

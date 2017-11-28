@@ -1,0 +1,28 @@
+<h2 id="rentaltitle"> Rental requests</h2>
+<div id= "rentalreq" class="container">
+<table class="table">
+        <thead>
+          <tr id="myheader3">
+            <th>User</th>
+            <th>Item</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Days</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @rentals.each do |rentals| %>
+          <tr id="mytable3">
+            <td><%= rentals.user.name %></td>
+            <td><%= rentals.item.name %></td>
+            <td><%= rentals.start_date %></td>
+            <td><%= rentals.end_date %></td>
+            <td><%= rentals.days %></td>
+            <td> <%= link_to('Accept', rental_change_to_accept_path(:rental_id =>rentals.id), :method => :put, :confirm => "Sure?", class:'btn btn-success') %></td>
+            <td><%= link_to 'Decline', rentals, method: :delete , class:'btn btn-danger' %></td>
+          </tr>
+          <% end %>
+        </tbody>
+  </table>
+</div>

@@ -1,0 +1,145 @@
+<br><br><br>
+
+<div class="container-fluid text-center row" >    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    </div>
+
+
+	<div class="col-sm-8 sidenav">
+		
+       
+		<div id="content">
+      <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li><a></a></li>
+        <li><a></a></li>  
+	    	<li><a></a></li> 
+	    	<% if current_user.id == @user.id %>
+  			<li class="active">
+          <a  href="#1" data-toggle="tab">My Profile</a>
+  			</li>
+  			<li><a href="#2" data-toggle="tab">Rentals Request</a></li>
+  			<li><a href="#3" data-toggle="tab">My Transactions</a></li>
+  			<li><a href="#4" data-toggle="tab">My Items</a></li>
+  			<% else %>
+  			<li class="active">
+  			  <a  href="#1" data-toggle="tab">Profile</a>
+  			 </li>
+  			<li><a href="#4" data-toggle="tab"><%= @user.name %>'s Items</a></li>
+  			<% end %>
+  			<li><a></a></li>
+        <li><a></a></li>  
+	    	<li><a></a></li> 
+	    </ul>
+		</div>
+	</div>
+	
+	<div class="tab-content ">
+	  
+			  <div class="tab-pane active" id="1">
+            <div class="container-fluid text-center row" >    
+              <div class="row content">
+                
+                <div class="col-sm-3 sidenav">
+                </div>
+                
+                <div class="col-sm-6 sidenav">
+                  <br><br>
+
+                <%= image_tag @user.profilepic.url(:medium) %>
+
+  		            <div id= "myform" class="container">
+  		              <strong id="otherUsersInfo">Name:  </strong>
+  	                <span class="otherUsersInfoValue">
+                      <%= @user.name %>
+                    </span>
+                    
+                    <p>
+                      <strong id="otherUsersInfo">Location:  </strong>
+                      
+                    </p>
+                    <% if current_user.id == @user.id %>
+                    <button type="button" class="btn btn-default" id="itemShowButt2">
+                    <%= link_to 'Edit', edit_user_path(@user) %>
+                    </button>
+                    <% end %>
+  		            </div>
+  		            
+  	            	<br><br><br>
+                </div>
+                
+                <div class="col-sm-3 sidenav">
+                </div>
+                
+              </div>
+            </div>
+			  </div>
+				
+				<div class="tab-pane" id="2">
+				  <div class="container-fluid text-center row" >    
+            <div class="row content">
+              <div class="col-sm-12 sidenav">
+                <% if current_user.Rental_request.count ==0 %>
+                  <h3 id="usershowpadd">You Don't Have Any Request Notifications.</h3>
+                	<br>
+                	<div class="btn-group" role="group" aria-label="userShowButtons">
+                    <button type="button" class="btn btn-default" id="itemShowButt2"><%= link_to new_item_path do %>  Add Item  <% end %></button>
+                  </div>
+                  <br><br><br>
+                <% else %>
+                  <%= render :partial =>'rentals/all_requests' %>
+                <% end %>
+				      </div>
+				     </div>
+				  </div>
+			</div>
+				
+        <div class="tab-pane" id="3">
+          <div class="container-fluid text-center row" >    
+            <div class="row content">
+              <div class="col-sm-12 sidenav">
+                <% if current_user.ongoing_transaction.count ==0 %>
+                  <h3 id="usershowpadd">You Don't Have Any Transactions.</h3>
+            		  <br>
+            		  <div class="btn-group" role="group" aria-label="userShowButtons">
+            		    <button type="button" class="btn btn-default" id="itemShowButt2"><%= link_to new_item_path do %>  Add Item  <% end %></button>
+                  </div>
+                  <br><br><br>
+                <% else %>
+                  <%= render :partial =>'transactions/history' %>
+                <% end %>
+				      </div>
+			    	</div>
+				  </div>
+				</div>
+				
+			  <div class="tab-pane" id="4">
+          <div class="container-fluid text-center row" >    
+            <div class="row content">
+              <div class="col-sm-12 sidenav">
+                  <%= render partial: 'items/items_list', locals: { items: Item.where(user_id: @user.id)} %>
+              </div>
+            </div>
+          </div>
+        </div>
+				
+			</div>
+  </div>
+	
+    
+   
+
+	<div class="col-sm-2 sidenav">
+	 </div>
+	 
+ </div>
+</div>
+
+<br>
+			
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+ 

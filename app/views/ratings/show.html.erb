@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Stars:</strong>
+  <%= @rating.stars %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @rating.comment %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rating.user.name %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @rating.item %>
+</p>
+
+
+  <!--Code for showing stars and rating-->
+  
+
+           <% if @ratings.blank? %>
+              <h3>No reviews just yet, would you like to add the first!</h3>
+              <%= link_to "Write Review", new_item_rating_path(@item), class: "btn btn-danger" %>
+           <% else %>
+              <% @ratings.each do |rating| %>
+
+                   <%= rating.user.name %>
+
+                  <% (1..rating.stars).each do |i| %>   
+                  <%= image_tag "golden_star.png", :class => "style_image" %>  
+                  <%end%>
+                  
+                  <p><%= rating.comment %></p>
+            </div>
+            
+            <% end %>
+         <% end %>
+  
+    <!--Code for showing stars and rating-->
+<%= link_to "Rate itttt" , new_item_rating_path(@item) %>
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>

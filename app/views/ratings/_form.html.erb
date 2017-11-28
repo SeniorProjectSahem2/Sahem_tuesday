@@ -1,0 +1,72 @@
+<div class="container-fluid text-left row">    
+	  <div class="row content">
+	
+	    <div class="col-sm-3 sidenav">
+      </div>
+      
+      <div class="col-sm-6"> 
+      <h1>New Rating</h1>
+      <div id= "myform" class="container">
+        <%= form_for([@item, @rating]) do |f| %>
+          <% if @rating.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
+        
+              <ul>
+              <% @rating.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        
+          <div class="field">
+            <%= f.label :stars %>    (5 is Best)<br>
+            <%= f.select :stars, [1,2,3,4,5], :id => "fieldsize1"%>  
+          </div>
+        
+        
+        <div class="field">
+            <div id="star-rating"></div>
+          </div>
+        
+             <%= f.hidden_field :item_id %>
+        
+          <br>
+          <div class="field">
+            <%= f.label :comment %><br>
+            <%= f.text_area :comment,:id => "fieldsize"%>
+          </div>
+          
+          <br>
+          <div class="actions">
+          
+         <%= f.submit "Submit my Rating",:id => "itemShowButt2" %>
+         <%= link_to 'Back',item_path(@item),:id => "newItemBack" %>
+
+          </div>
+        <% end %>
+        
+        
+        
+        <script>
+          $('#star-rating').raty({
+            path: '/images/',
+            scoreName: 'rating[stars]'
+          });
+        </script>
+        <br>
+        </div>
+        
+        <div class="col-sm-3 sidenav">
+        </div>
+    
+    </div>
+</div>        
+        
+         
+        
+        
+          
+        
+        

@@ -1,0 +1,153 @@
+<div class="container-fluid text-center">    
+
+    <div class="col-sm-1 sidenav"></div>
+    
+    <div class="col-sm-10 text-center">
+      
+      <div id="myform" class="container"> 
+      
+      <br><h1><b><%= @item.name %></b></h1>
+      <hr id="homehr2">
+      <br>
+      
+      
+      <div class="container-fluid text-left">
+        
+   
+        
+        <div class="col-sm-6">      
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag @item.image.url, :class => "allitemsimg" %>
+            </div>
+
+            <div class="item">
+              <%= image_tag @item.image2.url, :class => "allitemsimg" %>
+            </div>
+
+            <div class="item">
+              <%= image_tag @item.image3.url, :class => "allitemsimg" %>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+          <br><br>
+          
+          <div id="itemShowButt3">  
+          <% if @ratings.blank? %>
+            <h3>No reviews just yet, would you like to add the first?</h3>
+            <%= link_to "Write Review", new_item_rating_path(@item), class: "btn btn-danger" %><br><br>
+          <% else %>
+          
+            <h3>Ratings:</h3><br>
+            
+              <% @ratings.each do |rating| %>
+            
+                  <%= rating.user.name %>
+                  
+                  (<% (1..rating.stars).each do |i| %>   
+                  <%= image_tag "golden_star.png", :class => "style_image" %> 
+                  <%end%>)
+                  
+                  <p><%= rating.comment %></p><hr>
+            <% end %>
+            <% end %>
+          </div>
+          
+          <br><br>
+          
+        </div>
+        
+        
+        <div class="text-left col-sm-6">
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Description:</div><br>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.description %></div>
+          </div>
+        
+          <br>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Posted By:</div> 
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.user.name %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Daily Price:</div> 
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.daily_price %> QAR</div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Weekly Price:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.weekly_price %> QAR</div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Monthly Price:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.monthly_price %> QAR</div>
+          </div>
+          
+          <div class="row">  
+            <div class="col-sm-4" id="itemShowButt">Available Quantity:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.quantity_left %></div>
+          </div>
+           
+          <div class="row"> 
+            <div class="col-sm-4" id="itemShowButt">Category:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.category.name %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Item Dimensions:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.size %></div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-4" id="itemShowButt">Item Weight:</div>
+            <div class="col-sm-8" id="itemShowButt1"><%= @item.weight %></div>
+          </div>
+          
+        </div>
+
+      </div>
+
+    
+     
+
+      </div>
+     
+      <br><br>
+      
+      <%= link_to 'Edit', edit_item_path(@item), class:'btn btn-default', id:'itemShowButt2' %> |
+      <%= link_to 'Back', items_path, class:'btn btn-default', id:'itemShowButt2' %>
+   
+    <br><br>
+    
+    </div>
+
+    <div class="col-sm-1 sidenav"></div>
+
+</div>
+
+

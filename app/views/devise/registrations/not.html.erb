@@ -1,0 +1,77 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :fullname %><br>
+    <%= f.text_area :fullname %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_area :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_area :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phonenumber %><br>
+    <%= f.number_field :phonenumber %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_area :location_id %>
+  </div>
+  
+  <div class="field">
+  <%= f.label :location %><br>
+  <%= f.select(:location, options_for_select([['Ad Dawha', 'Ad Dawha'], ['Al Wakrah', 'Al Wakrah'], ['Umm Salal', 'Umm Salal'], ['Al Shahaneya', 'Al Shahaneya']])%>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_type %><br>
+    <%= f.select :user_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!--/* https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_dropdown-divider&stacked=h (for dropdown list)*/-->
+
+<!--#       <div class="dropdown">-->
+<!--#         <label for="location">*Location</label>-->
+<!--#   <br>-->
+<!--#         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" size="50">Select location/area-->
+<!--#         <span class="caret"></span></button>-->
+<!--#         <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Ad Dawha</a></li>-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Al Wakrah</a></li>-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Umm Salal</a></li>-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Al Shahaneya</a></li>-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Al Rayyan</a></li>-->
+<!--#           <li role="presentation" class="divider"></li>-->
+<!--#           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Other</a></li>-->
+<!--#         </ul>-->
+<!--#       </div>-->
+<!--#   <br>-->
+<!--# <!--https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_radio_inline&stacked=h (inline radio buttons)-->-->
+<!--# <!--/* https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_form_radio&stacked=h (for the radio buttons)*/-->-->
+      
+<!--#       <label for="usertype">*User type</label>-->
+        
+<!--#         <div class="container">-->
+<!--#         <form>-->
+<!--#           <label class="radio-inline">-->
+<!--#             <input type="radio" name="optradio">Individual-->
+<!--#           </label>-->
+<!--#           <label class="radio-inline">-->
+<!--#             <input type="radio" name="optradio">Business-->
+<!--#           </label>-->
+<!--#         </form>-->
+<!--#         </div>-->

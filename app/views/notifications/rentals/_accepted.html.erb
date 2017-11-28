@@ -1,0 +1,11 @@
+
+<%= link_to rental_acceptance_msg_path(notification.notifiable.item, anchor: dom_id(notification.notifiable)), class: "dropdown-item #{"unread" if !notification.read_at?}" do %>
+
+  <b><p id="notificationDropDown">
+    <%= notification.actor.name %>
+    <%= notification.action %>
+    a <%= notification.notifiable_type.underscore.humanize.downcase %>
+  </p>
+  </b>
+  
+<% end %><br>

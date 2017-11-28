@@ -1,0 +1,201 @@
+<div class="row content">
+  
+  <div class="col-sm-1 sidenav"></div>
+  
+  <div class="col-sm-10 text-center">
+    
+    <div id="myform" class="container"> 
+    
+    <br><h1><b><%= @rental.item.name %></b></h1>
+    <hr id="homehr2">
+    <br>
+    
+    
+    <div class="container-fluid text-left">
+      
+      <div class="col-sm-6">
+          
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag @rental.item.image.url, :class => "allitemsimg" %>
+            </div>
+
+            <div class="item">
+              <%= image_tag @rental.item.image2.url, :class => "allitemsimg" %>
+            </div>
+
+            <div class="item">
+              <%= image_tag @rental.item.image3.url, :class => "allitemsimg" %>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        
+        <br><br>
+      
+        <div class="row">
+          <div id="itemShowButt">Description:</div>
+        </div>
+        
+        <div class="row">
+          <div id="itemShowButt1"><%= @rental.item.description %></div>
+        </div>
+      
+        <br>
+        
+        <div class="row">
+          <div class="col-sm-4" id="itemShowButt">Daily Price:</div> 
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.daily_price %> QAR</div>
+        </div>
+        
+        <div class="row">  
+          <div class="col-sm-4" id="itemShowButt">Weekly Price:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.weekly_price %> QAR</div>
+        </div>
+        
+        <div class="row">  
+          <div class="col-sm-4" id="itemShowButt">Monthly Price:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.monthly_price %> QAR</div>
+        </div>
+        
+        <div class="row">  
+          <div class="col-sm-4" id="itemShowButt">Available Quantity:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.quantity_left %></div>
+        </div>
+         
+        <div class="row"> 
+          <div class="col-sm-4" id="itemShowButt">Category:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.category.name %></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-4" id="itemShowButt">Item Dimensions:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.size %></div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-4" id="itemShowButt">Item Weight:</div>
+          <div class="col-sm-8" id="itemShowButt1"><%= @rental.item.weight %></div>
+        </div>
+        
+      </div>
+ 
+      
+    <div class="text-left col-sm-6">
+      
+      <div class="row content">
+          
+        <%= form_for(@rental) do |f| %>
+        <% if @rental.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+      
+            <ul>
+            <% @rental.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+      
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :item_id %>
+        <%= f.hidden_field :status%>
+      
+        <div id= "rentalform" class="container">  
+        
+          <h2 class="text-center">Borrow Item</h2>
+          
+          <hr id="homehr2">
+          
+          <div id="myfield" class="field">
+            <%= f.label :start_date %> 
+            <%= f.date_select :start_date %>
+          </div>
+          
+          <div id="myfield"class="field">
+            <%= f.label :end_date %> 
+            <%= f.date_select :end_date %>
+          </div>
+          
+          <div id="myfield"class="field">
+            <%= f.label :quantity %>
+            <%= f.select(:quantity, 1.upto(@rental.item.quantity_left).to_a) %>
+          </div>
+          
+          <div id= "mybutton" class="actions"> <br />
+            <%= f.submit "Submit Request",:id => "itemShowButt2"%><br><br>
+          </div>
+          
+        </div>
+        
+        <% end %>
+              
+      </div>
+      
+      <br><br>
+      
+      <div id="itemShowButt4">
+           
+           
+           <% if @ratings.blank? %>
+              <h3>Would you like to Rate Item?
+              <%= link_to "Write Review", new_item_rating_path(@rental.item_id), class: "btn btn-danger" %></h3><br>
+              
+           <% else %>
+            
+            <h3>Ratings:</h3><br>
+              <% @ratings.each do |rating| %>
+              
+                  <%= rating.user.name %>
+                  (<% (1..rating.stars).each do |i| %>   
+                  <%= image_tag "golden_star.png", :class => "style_image" %>  
+                  <%end%>)
+                  
+                  <p><%= rating.comment %></p>
+                  <hr>
+            <% end %>
+            
+            
+            <% end %>
+            
+            
+            
+            
+          </div> 
+      
+    </div>
+
+  </div>
+      
+  <br><br>
+  
+  
+  <%= link_to 'Back', items_path, class:'btn btn-default', id:'itemShowButt2' %>
+  
+  <br><br>
+  
+</div>
+
+<div class="col-sm-1 sidenav"></div>
+
+</div>

@@ -1,0 +1,125 @@
+<div class="container-fluid text-center">    
+
+    <div class="col-sm-1 sidenav"></div>
+    
+    <div class="col-sm-10 text-center"> 
+
+      <div id="items_div">
+        
+        <% if items.count == 0%>
+          <br>
+          <h3 id="itemsheader">Sorry, There are no Items to View!</h3><br>
+          <%= link_to 'Add Item', new_item_path, class:'btn btn-default', id:'itemShowButt2' %>
+          <br><br><br><br><br>
+        <% end %>
+    
+        <% if user_signed_in? %>
+        
+          <% items.each do |item| %>
+          <div class="panel-group">
+            <div class="panel panel-default" id="itemspanel">
+              <div class="panel-heading"><b><%= item.name %> (<%= item.weekly_price %> QR/ Week)</b></div>
+              <br>
+               <%= image_tag item.image.url(:medium) %>
+               <br><br>
+              <div id="paneldiv"><b>Description:</b> <%= item.description.first(20) %></div><br>
+              <div id="paneldiv"><b>Posted by: </b> <%= link_to item.user.name , item.user %> </div><br>
+
+              <%if  item.quantity_left==0 %>
+              <div id="paneldiv"><b>Current quantity:</b> Out of stock</div><br>
+              <% else %>
+              <div id="paneldiv"><b>Current quantity:</b> <%= item.quantity_left %></div><br>
+              <% end %>
+              <% if can? :destroy , item %>
+              <div class="text-center"><%= link_to 'View Item', item, class:'btn btn-default' %> | <%= link_to 'Remove', item, method: :delete , class:'btn btn-danger' %></div>
+             <br>
+             <% x= item.avg_rating  %>
+             <% if x > 0 %>
+              
+              Average Rating: <%= item.avg_rating  %>
+
+              <% (1..x).each do |i| %>
+              <%= image_tag "golden_star.png", :class => "style_image" %>  
+
+              <% end %>
+              
+              <% else %>
+              
+              Average Rating: No Ratings yet
+              
+             <% end %>
+             
+              <% else %>
+              
+                <% if current_user.pending_request(item.id).count == 0 %>
+                
+                  <div class="text-center"><%= link_to 'Borrow',  new_rental_path(:item_id => item.id), class:'btn btn-default', disabled: item.quantity_left==0  %>
+                <% else %>
+                  <div class="text-center"><%= link_to 'Requested',  current_user.pending_request(item.id)[0], class:'btn btn-default' %>
+                <% end %>
+                
+                
+                
+              
+              <% x= item.avg_rating  %>
+                <%= link_to "Rate Item", new_item_rating_path(item.id), class:'btn btn-default' %> </div><br>
+              <% if x > 0 %>
+              
+              Average Rating: <%= item.avg_rating  %>
+
+              <% (1..x).each do |i| %>
+              <%= image_tag "golden_star.png", :class => "style_image" %>  
+
+              <% end %>
+              
+              <% else %>
+              
+              Average Rating: No Ratings yet
+              
+             <% end %>
+                          <% end %>
+
+
+            </div>
+          </div>
+            
+            
+          
+          <% end %>
+          
+        <% else %>
+
+          <% items.each do |item| %>
+          
+          
+          <div class="panel-group">
+            <div class="panel panel-default" id="itemspanel">
+              <div class="panel-heading"><b><%= item.name %> (<%= item.weekly_price %> QR/ Week)</b></div>
+              <br>
+               <%= image_tag item.image.url(:medium) %>
+               <br><br>
+              <div id="paneldiv"><b>Description:</b> <%= item.description.first(20) %></div><br>
+              <div id="paneldiv"><b>Posted by:</b> <%= item.user.name %></div><br>
+              <%if  item.quantity_left==0 %>
+              <div id="paneldiv"><b>Current quantity:</b> Out of stock</div><br>
+              <% else %>
+              <div id="paneldiv"><b>Current quantity:</b> <%= item.quantity_left %></div><br>
+              <% end %>
+              
+             <br>
+
+            </div>
+          </div>
+            
+            
+          
+          <% end %>
+        
+        <% end %>
+        
+    
+    </div>
+    
+    <div class="col-sm-1 sidenav"></div>
+    
+</div>
